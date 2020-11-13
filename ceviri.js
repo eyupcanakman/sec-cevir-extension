@@ -161,8 +161,14 @@
   function sc_parseRequest(veri, elemid) {
     let htmlObject = document.createElement('html');
     htmlObject.innerHTML = veri;
-    let t0object = htmlObject.querySelector('.t0');
-    let cevirison = t0object.innerText;
+    let resultContainer = htmlObject.querySelector('.t0');
+    if (!resultContainer) {
+      resultContainer = htmlObject.querySelector('.result-container');
+    }
+    if (!resultContainer) {
+      return;
+    }
+    let cevirison = resultContainer.innerText;
     let translateResult = cevirison.sc_capitalize();
 
     let tt_text = '<p style="line-height:18px;font-size:17px;margin:1px 0;padding:0;color:black;text-align:left; font-family:Arial,Serif,Verdana,serif;">' +
